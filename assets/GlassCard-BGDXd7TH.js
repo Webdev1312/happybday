@@ -1,0 +1,1 @@
+import{j as o}from"./index-Br6RxPqq.js";import{m as t}from"./SceneWrapper-B0jIy_7X.js";function e({children:a,className:s=""}){return o.jsx(t.div,{initial:{opacity:0,y:24,scale:.96},animate:{opacity:1,y:0,scale:1},transition:{duration:.7,ease:"easeOut"},className:`glass bg-card-glow rounded-3xl p-6 shadow-glow ${s}`,children:a})}export{e as G};
