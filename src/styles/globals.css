@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  @apply bg-night-gradient font-body;
+  /* Scene-based navigation, not scroll-based, per the brief. */
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Individual scenes opt back into scrolling only where content genuinely
+   needs it (e.g. the reasons grid, the long letters). */
+.scene-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 143, 189, 0.35);
+  border-radius: 999px;
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.glow-text {
+  text-shadow: 0 0 18px rgba(255, 143, 189, 0.55), 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Ripple effect for the primary buttons */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.ripple:active::after {
+  opacity: 1;
+  transform: scale(1.4);
+  transition: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Lock the experience to portrait — a gentle nudge on devices/browsers
+   that report a landscape orientation change. */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .rotate-hint {
+    display: flex;
+  }
+}
+.rotate-hint {
+  display: none;
+}
