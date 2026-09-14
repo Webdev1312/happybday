@@ -9,7 +9,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 const base = process.env.VITE_BASE_PATH || '/';
 
 export default defineConfig({
-  base,
+  base: '/happybday/', // 👈 Replace 'base,' with this entire line
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
